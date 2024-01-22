@@ -1,0 +1,228 @@
+새로운 방법의 데이터 처리
+새로운 플랫폼
+
+[가상머신 프로그램]
+	VMWare : 
+		정식버전이 유료
+		사양을 많이 잡아먹음.
+		> 가상머신의 성능이 좋다.
+
+	VirtualBox : 
+		무료
+		사양을 비교적 덜 잡아먹음
+		> 가상머신의 성능이 비교적 안좋음.
+		> 윈도우가 상대적 성능을 더 사용 가능.
+		리눅스 설치해야됨.
+
+[Linux]
+	Linux 라는 코어가 있고
+	다양한 회사들이 추가기능 붙여서 Linux 배포판을 추시
+	
+	같은 계열끼리는 사용법 비슷.
+
+	RedHat 계열
+		RedHat 리눅스 - V 큰 기업에서 서버로 활용
+		CentOS 리눅스
+		Fedora 리눅스
+		...
+	Debian 계열
+		Debian 리눅스
+		Ubuntu 리눅스 - V 개인이 많이 사용
+		...
+	Mac 계열
+		MAC
+		iOS
+	Android 계열
+		Android
+
+[Hadoop]
+	PC > 빅 데이터를 소화하기에는 무리가 있음.
+	서버급 컴퓨터 x n 대로 병렬 처리해주는 .jar
+		> 대용량의 데이터를 적은 비용을 들여
+		> 처리, 분석, 저장
+		> 빠르게 할 수 있다.
+
+	서버 : 윈도우 (X), 리눅스 (O)
+		원격제어에도 용이해야...
+
+---------------------------------------------------------------
+이름 / 종류 : Linux / 버전 : Ubuntu 64bit
+램 2G 정도
+HDD > 지금 새 하드 > VDI > 동적할당 > 용량 20G
+
+설정 > 네트워크> 다음에 연결됨 : 어댑터에 브리지 > 무작위 모드 : 가상 머신에 허용
+시동 디스크 선택 > Ubuntu 선택
+
+설치 다 되면 Restart Now > 누르지 말고 대기
+
+장치 > 광학드라이브 > 디스크 꺼내기 > 강제 마운트 해제
+
+파일 > 닫기 > 시스템 종료 > 가상머신 다시 시작
+
+================
+ctrl + alt + t : 터미널 키기
+	> ifconfig
+
+
+터미널 정리 : clear
+sudo > 관리자 권한
+
+Java : Maven
+Python : pip
+Linux :
+	Redhat : yum
+	Debian : apt-get
+
+sudo apt-get install [프로그램명] > 설치
+sudo apt-get remove [프로그램명] > 삭제 - 설정파일은 남아있다.
+sudo apt-get purge [프로그램명] > 삭제 - 완전히 삭제
+
+1) 원격제어가 가능하게 하는
+	(컴퓨터를 안전하게 제어하기 위한 프로토콜)
+
+	telnet << 보다 보안이 더 뛰어난 ssh(secure shell)을 사용하려고 함.
+	sudo apt-get install openssh-server
+
+* ssh 설치가 안될 때,('openssh-server' has no installation candidate)
+	:sudo apt-get update 후에 진행
+
+2) 윈도우에서 리눅스를 원격으로 제어 할 수 있는 프로그램 - putty 설치
+	putty : ssh client program
+
+
+간단 사용법 :
+	clear : 터미널 초기화
+	pwd(parent working directory) : 현재 위치 확인
+	ls : 폴더 확인
+	ls -l : 폴더를 리스트 형태로 확인
+	ls -a : 숨김폴더까지 확인
+	ls -al : 이런식으로 혼합사용 가능
+
+	화살표 위/아래 : 사용했던 명령어
+	history : 내가 그동안 사용한 명령어 확인
+		> !번호 로 그 명령어 다시 실행
+
+	(change directory) : 경로 이동
+	cd 폴더명 : 해당 폴더로 이도ㅛㅇ
+	cd ~ : 최상위 경로로
+	cd .. : 한단계 상위 경로로
+	mkdir 폴더명 : 폴더 만들기
+----------------------------------------------------------------------------
+vi editor >> Windows Memo
+vim-tiny 기본적으로 설치되어 있음.
+허나 키보드의 화살표키를 못 쓰게 막혀있음.. > 삭제
+	sudo apt-get remove vim-tiny
+
+ vim(정식버전) 설치
+	sudo apt-get install vim
+
+	vi [파일명]
+	(vi : 해당하는 파일이 있으면 그거 열어주고, 없으면 새로 생성)
+	a : 글 쓰기 가능 (insert 모드)
+	/검색어 : 검색어 찾기
+	dd : 그 줄 삭제
+	yy : 복사
+	p : 붙이기
+	
+	다 쓴 후
+		esc :q! > 그냥 종료
+		esc :wq! > 저장 후 종료
+
+	< 파일 복사 >
+	cp 파일명 어디(경로)
+
+	< 파일 삭제 >
+	rm -rf 파일명
+	디렉토리를 삭제할 때는 r 옵션
+	f 옵션을 주면 삭제 여부를 묻지 않는다.
+	디렉토리를 삭제할 때는 하위 경로에 있는 파일들 전부 삭제.
+
+	< 파일 이동 >
+	mv 파일명 어디(경로)
+-------------------------------
+최상위 폴더에
+메모장 하나 열어서 내용 넣고
+저장 후에 나와서
+새롭게 만든 폴더에 메모장 파일 복사해서 넣기
+--------------------------------
+아카이빙 : 파일 여러개를 하나로 묶는 것
+	tar
+
+압축 : 파일 하나의 사이즈를 줄이는 것
+	gz(gzip)
+	bz2
+
+XXX.tar.gz
+	c : 압축(아카이빙) 하기
+	x : 풀기(아카이빙)
+	v : 과정을 터미널에 보여줌.
+	
+	z : gz로 압축
+	j : bz2로 압축
+
+	f 파일명 : 압축할 파일의 이름을 지정
+
+> practice 폴더를 practice.tar.gz으로 아카이빙&압축
+	
+	tar cvzf practice.tar.gz practice
+
+> 압축해제
+	
+	tar xvzf practice.tar.gz
+------------------------------------
+> zip으로 압축
+zip -r 파일명 압축할 파일명
+
+	zip -r practice.zip practice
+
+unzip 압축해제할 파일명
+
+	unzip ractice.zip
+------------------------------------
+FTP 서버
+	: File transfer Protocol
+	인터넷 망으로 연결되어 있는 멀리 떨어져있는 서버로
+	파일을 올리거나, 가져오기 위해 필요한 일종의 프로토콜
+
+vsftpd 설치
+	sudo apt-get install vsftpd
+
+설치파일 수정
+	(최상위 > ect > vsftpd.conf)
+	sudo vi /etc/vsftpd.conf
+
+	/찾을단어 > 찾기
+	write_enable=Yes > 주석 해제 후 저장 종료 
+
+FTP 서버 재시작
+sudo service vsftpd restart
+-------------------------------------------------------
+Linux에 openJDK 설치
+
+Linux에 Python은 내장되어있음.
+하지만 Java는 내장되어있지 않으므로 설치해야 함.
+apt-get 중앙저장소에도 없기 때문에 외부에서 끌고와야 함.
+
+사설 저장소 등록
+	저장소 주소 : ppa:openjdk-r/ppa
+
+	sudo add-apt-repository 주소
+	sudo add-apt-repository ppa:openjdk-r/ppa
+
+로컬 apt-get 업데이트
+	sudo apt-get update
+
+openJDK 설치
+	프로그램 명 : openjdk-8-jdk
+	sudo apt-get install openjdk-8-jdk
+
+설치 확인
+	java -version
+----------------------------------------------------
+python 실행
+	> python3 이름.py
+
+Java 실행 (Runnable Jar로 Export 할 것.)
+	> java -jar 이름.jar
+
+가상머신 키기 (Ubuntu) > Putty 연결 > 알드라이브 연결
